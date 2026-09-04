@@ -1,0 +1,38 @@
+format = """
+[](bg:#1a1b26 fg:#7aa2f7)\
+$directory\
+[](fg:#1a1b26 bg:#24283b)\
+$git_branch$git_status\
+[](fg:#24283b bg:#1a1b26)\
+$nodejs$python$dotnet\
+[](fg:#1a1b26)
+$character"""
+
+[directory]
+style = "bg:#1a1b26 fg:#c0caf5 bold"
+format = "[ $path ]($style)"
+truncation_length = 3
+
+[git_branch]
+style = "bg:#24283b fg:#bb9af7"
+format = "[ $symbol$branch ]($style)"
+
+[git_status]
+style = "bg:#24283b fg:#f7768e"
+format = "[$all_status$ahead_behind ]($style)"
+
+[nodejs]
+style = "fg:#9ece6a"
+format = "[ $symbol$version ]($style)"
+
+[python]
+style = "fg:#e0af68"
+format = "[ $symbol$version ]($style)"
+
+[dotnet]
+style = "fg:#7dcfff"
+format = "[ $symbol$version ]($style)"
+
+[character]
+success_symbol = "[➜](bold #9ece6a)"
+error_symbol = "[➜](bold #f7768e)"

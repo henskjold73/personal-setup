@@ -1,0 +1,12 @@
+enkia.tokyo-night
+pkief.material-icon-theme
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
+ms-python.python
+ms-python.vscode-pylance
+ms-dotnettools.csharp
+ms-dotnettools.csdevkit
+eamodio.gitlens
+anthropic.claude-code
+editorconfig.editorconfig
+christian-kohler.path-intellisense
