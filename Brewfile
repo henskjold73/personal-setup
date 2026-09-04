@@ -1,13 +1,14 @@
 # CLI tools
 brew "git"
-brew "node"
+brew "nvm"
 brew "python"
 brew "starship"
 brew "gh"
-cask "dotnet-sdk"
 
 # Casks
 cask "hyper"
 cask "visual-studio-code"
-cask "claude"  # Claude desktop app — includes Chat, Cowork, and Claude Code integration
+cask "claude"             # Claude desktop app — Chat + Cowork
+cask "claude-code"        # Claude Code CLI, Homebrew-managed
+cask "dotnet-sdk"
 cask "font-fira-code-nerd-font"
