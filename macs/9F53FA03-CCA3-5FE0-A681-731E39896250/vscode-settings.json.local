@@ -1,0 +1,141 @@
+{
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "Fira Code",
+  "editor.allowVariableFonts": true,
+  "editor.fontLigatures": true,
+  "editor.fontVariations": false,
+  "editor.fontWeight": "450",
+  "github.copilot.nextEditSuggestions.enabled": true,
+  // Prettier as default formatter for code files
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  // 👉 Prettier for CSS, SCSS, Less
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  // Auto-format on save
+  "editor.formatOnSave": true,
+
+  // ESLint fixes
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.fixAll.eslint": "always",
+  },
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "mssql.connectionGroups": [
+    {
+      "name": "ROOT",
+      "id": "ROOT",
+    },
+  ],
+  "mssql.connections": [
+    {
+      "authenticationType": "SqlLogin",
+      "connectTimeout": 30,
+      "applicationName": "vscode-mssql",
+      "applicationIntent": "ReadWrite",
+      "server": ".",
+      "database": "",
+      "user": "sa",
+      "password": "",
+      "commandTimeout": 30,
+      "encrypt": "Mandatory",
+      "profileName": "basen-mssql",
+      "trustServerCertificate": true,
+      "savePassword": true,
+      "groupId": "ROOT",
+      "id": "E239FAD8-A6B3-4488-9471-A38FB8762A9D",
+      "profileSource": 0,
+      "containerName": "basen-mssql",
+    },
+  ],
+  "git.enableSmartCommit": true,
+  "github.copilot.chat.commitMessageGeneration.enabled": true,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "Use Conventional Commits (feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert). Keep the subject ≤ 72 chars.",
+    },
+    {
+      "text": "PRIMARY GOAL: Describe only semantic changes (behavior, API, logic, UI output).",
+    },
+    {
+      "text": "IGNORE NON-SEMANTIC CHANGES: Do not mention formatting, whitespace-only edits, import reordering, organizing imports, lint 'fix' noise, generated files, or pure version bumps. Ignore changes limited to package.json (version field), public/version.json, pyproject.toml, pom.xml, Cargo.toml, lockfiles (package-lock.json, yarn.lock, pnpm-lock.yaml, Pipfile.lock, Poetry.lock, Cargo.lock, go.sum, Gemfile.lock, composer.lock), and generated CHANGELOG.md entries.",
+    },
+    {
+      "text": "OUTPUT FORMAT FOR RELEASE-LIKE COMMITS WITH MULTIPLE MEANINGFUL CHANGES:\nchore(release): <~20 chars descriptive title>\n\n- <short title 1>: <specific what/why>\n- <short title 2>: <specific what/why>\n- <short title 3>: <specific what/why>",
+    },
+    {
+      "text": "QUALITY BAR: Avoid generic phrases such as 'improve formatting', 'clean up code', 'refactor imports', 'misc updates', 'minor tweaks', 'address review comments'. Instead, name the component/file/symbol and action, e.g., '- auth reducer: handle expired tokens'.",
+    },
+    {
+      "text": "FALLBACKS: If all staged changes are version bumps/lockfiles/changelogs, suggest exactly: 'chore(release): bump version'. If all staged changes are only formatting/whitespace/import-order with no semantic changes, respond with exactly: 'SKIP_NON_SEMANTIC'.",
+    },
+  ],
+  "sonarlint.connectedMode.connections.sonarcloud": [
+    {
+      "organizationKey": "forsvarsbygg",
+      "connectionId": "forsvarsbygg",
+      "region": "EU",
+    },
+  ],
+  "sonarlint.automaticAnalysis": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+  },
+  "chat.useAgentSkills": true,
+  "explorer.confirmDelete": false,
+  "chat.viewSessions.orientation": "stacked",
+  "azureResourceGroups.selectedSubscriptions": [
+    "ea445713-00a8-495f-aafa-26062e969e4f/70594950-b56d-42f4-9155-1115643bef35",
+    "ea445713-00a8-495f-aafa-26062e969e4f/4e289f7d-de4d-4d96-ae56-b0bdde03c935",
+    "ea445713-00a8-495f-aafa-26062e969e4f/a544a9d0-1dac-4777-bd88-0e3ddd219fb5",
+    "ea445713-00a8-495f-aafa-26062e969e4f/2e2422d8-34f4-4e0c-8b4d-e871c29cf6d2",
+    "ea445713-00a8-495f-aafa-26062e969e4f/d1641b57-fcaf-4280-8539-8a6f87351570",
+    "ea445713-00a8-495f-aafa-26062e969e4f/72a1e039-1b3d-463b-9199-75ae257b5150",
+  ],
+  "security.promptForLocalFileProtocolHandling": false,
+  "chat.sessionSync.enabled": true,
+  "chat.hookFilesLocations": {
+    ".github/hooks": true,
+    ".claude/settings.local.json": true,
+    ".claude/settings.json": true,
+    "~/.copilot/hooks": true,
+    "~/.claude/settings.json": true,
+    "~/.agents/hooks": true,
+  },
+  "gitlens.graph.details.location": "auto",
+  "chat.mcp.gallery.enabled": true,
+}

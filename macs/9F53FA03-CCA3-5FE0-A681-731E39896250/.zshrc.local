@@ -1,0 +1,176 @@
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+export DOTNET_ROOT="$HOME/.dotnet"
+export PATH="$PATH:$HOME/.dotnet/tools"
+export PATH="$DOTNET_ROOT:$PATH"
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time Oh My Zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
+
+# Functions
+
+grmb() {
+  if [ "$1" = "-f" ]; then
+    if [ -z "$2" ]; then
+      echo "Usage: grmb -f <pattern>"
+      return 1
+    fi
+    git branch | grep "$2" | xargs -r git branch -D
+  else
+    if [ -z "$1" ]; then
+      echo "Usage: grmb <pattern> or grm -f <pattern>"
+      return 1
+    fi
+    git branch | grep "$1" | xargs -r git branch -d
+  fi
+}
+
+
+# User configuration
+
+alias cl="clear"
+
+## git
+
+alias g="git"
+alias gf="g fetch -p"
+alias gl="g pull"
+alias gla='current_branch=$(git rev-parse --abbrev-ref HEAD) && for branch in $(git branch --format="%(refname:short)"); do git checkout $branch && git pull origin $branch; done && git checkout $current_branch'
+alias gldev="g pull origin/develop"
+alias gs="g push"
+alias gstash="g stash"
+alias gstashp="g stash pop"
+alias gdev="g checkout develop"
+alias gmain="g checkout main"
+alias gmaster="g checkout master"
+
+alias greset='g fetch -p && g reset --hard origin/$(git rev-parse --abbrev-ref HEAD)'
+
+alias gbr="g checkout -b"
+alias gclean="git branch -vv | grep ': gone]' | awk '{print \$1}' | xargs -r git branch -d"
+alias gcleanD="git branch -vv | grep ': gone]' | awk '{print \$1}' | xargs -r git branch -D"
+
+## git flow
+
+alias gff="git flow feature"
+alias gffs="gff start"
+alias gfff="gff finish"
+alias gfr="git flow release"
+alias gfrs="gfr start"
+alias gfrf="gfr finish"
+alias gfh="git flow hotfix"
+alias gfhs="gfh start"
+alias gfhf="gfh finish"
+
+## Capgemini
+
+alias cdb="cd ~/src/basen/"
+alias runbackend="dotnet run --project Basen.Api.AppHost/Basen.Api.AppHost.csproj"
+alias runsql="docker start basen-mssql"
+alias cleanupdocker='cutoff=$(date -v-2m -u +"%Y-%m-%dT%H:%M:%S") && docker ps -aq --filter status=exited | while read id; do created=$(docker inspect -f "{{.Created}}" "$id"); [[ "$created" < "$cutoff" ]] && docker rm "$id"; done'
+if command -v npm >/dev/null 2>&1; then
+  npm_global_prefix="$(npm prefix -g 2>/dev/null)"
+  npm_global_bin="$npm_global_prefix/bin"
+  [ -d "$npm_global_bin" ] && export PATH="$npm_global_bin:$PATH"
+  unset npm_global_prefix npm_global_bin
+fi
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+
+show_alias_help() {
+  local RESET=$'\033[0m'
+  local BOLD=$'\033[1m'
+  local DIM=$'\033[2m'
+  local CYAN=$'\033[36m'
+  local GREEN=$'\033[32m'
+  local YELLOW=$'\033[33m'
+  local MAGENTA=$'\033[35m'
+  local BLUE=$'\033[34m'
+
+  echo ""
+  echo "${CYAN}────────────────────────────────────────${RESET}"
+  echo "${BOLD}${GREEN} Shell loaded. Common aliases:${RESET}"
+  echo "${CYAN}────────────────────────────────────────${RESET}"
+
+  echo "  ${YELLOW}cl${RESET}         ${DIM}clear${RESET}"
+
+  echo ""
+  echo "  ${YELLOW}g${RESET}          ${DIM}git${RESET}"
+  echo "  ${YELLOW}gf${RESET}         ${DIM}git fetch -p${RESET}"
+  echo "  ${YELLOW}gl${RESET}         ${DIM}git pull${RESET}"
+  echo "  ${YELLOW}gs${RESET}         ${DIM}git push${RESET}"
+  echo "  ${YELLOW}gdev${RESET}       ${DIM}git checkout develop${RESET}"
+  echo "  ${YELLOW}gmain${RESET}      ${DIM}git checkout main${RESET}"
+  echo "  ${YELLOW}gmaster${RESET}    ${DIM}git checkout master${RESET}"
+  echo "  ${YELLOW}gbr${RESET}        ${DIM}git checkout -b${RESET}"
+  echo "  ${YELLOW}greset${RESET}     ${DIM}reset current branch to origin${RESET}"
+  echo "  ${YELLOW}gclean${RESET}     ${DIM}delete gone branches${RESET}"
+  echo "  ${YELLOW}gcleanD${RESET}    ${DIM}force delete gone branches${RESET}"
+
+  echo ""
+  echo "  ${YELLOW}gstash${RESET}     ${DIM}git stash${RESET}"
+  echo "  ${YELLOW}gstashp${RESET}    ${DIM}git stash pop${RESET}"
+
+  echo ""
+  echo "  ${MAGENTA}cdb${RESET}        ${DIM}cd ~/src/basen/${RESET}"
+  echo "  ${MAGENTA}runbackend${RESET} ${DIM}dotnet run --project Basen.Api.AppHost/Basen.Api.AppHost.csproj${RESET}"
+  echo "  ${MAGENTA}runsql${RESET}     ${DIM}docker start basen-mssql${RESET}"
+  echo "  ${MAGENTA}cleanupdocker${RESET} ${DIM}remove exited docker containers older than 2 minutes${RESET}"
+
+  echo ""
+  echo "  ${BLUE}grmb <pattern>${RESET}      ${DIM}remove merged branches matching pattern${RESET}"
+  echo "  ${BLUE}grmb -f <pattern>${RESET}   ${DIM}force remove branches matching pattern${RESET}"
+
+  echo "${CYAN}────────────────────────────────────────${RESET}"
+  echo ""
+}
+
+[[ $- == *i* ]] && show_alias_help
+
+export NODE_EXTRA_CA_CERTS=$HOME/.certs/cacerts.pem
+export ANTHROPIC_DEFAULT_HAIKU_MODEL="claude-haiku-latest"
+export ANTHROPIC_DEFAULT_OPUS_MODEL="claude-opus-latest"
+export ANTHROPIC_DEFAULT_SONNET_MODEL="claude-sonnet-latest"
+export ANTHROPIC_FOUNDRY_BASE_URL="https://foundry-ccaclaudefoundry-swe.services.ai.azure.com/anthropic/"
+export CLAUDE_CODE_USE_FOUNDRY=1
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias claude-personal="env -u CLAUDE_CODE_USE_FOUNDRY -u ANTHROPIC_FOUNDRY_BASE_URL -u ANTHROPIC_DEFAULT_SONNET_MODEL -u ANTHROPIC_DEFAULT_HAIKU_MODEL -u ANTHROPIC_DEFAULT_OPUS_MODEL CLAUDE_CONFIG_DIR=~/.claude-personal claude"
+
+# Producery dev — open two Hyper tabs: emulators + React app
+alias producery='osascript -e "
+tell application \"Hyper\" to activate
+delay 0.3
+tell application \"System Events\" to tell process \"Hyper\"
+  keystroke \"n\" using command down
+  delay 0.5
+  keystroke \"producery-emulators\"
+  key code 36
+  delay 0.3
+  keystroke \"t\" using command down
+  delay 0.3
+  keystroke \"producery-web\"
+  key code 36
+end tell
+"'
+export PATH="/Applications/Godot.app/Contents/MacOS:$PATH"

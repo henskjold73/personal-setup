@@ -50,15 +50,16 @@ scripts/import-mac.sh <macid> # brew bundle + VS Code extensions + npm globals f
 
 ## What install.sh sets up
 
-| Tool                           | Method                      | Config                                              |
-| ------------------------------ | --------------------------- | --------------------------------------------------- |
-| Homebrew + CLI tools           | Brewfile                    | node, python, git, gh, dotnet-sdk, starship         |
-| Hyper                          | cask + symlink              | hyper/.hyper.js — Tokyo Night theme, JetBrains Mono |
-| zsh                            | Oh My Zsh + plugins         | zsh/.zshrc — autosuggestions, syntax-highlighting   |
-| Prompt                         | Starship                    | starship.toml — Tokyo Night colors                  |
-| VS Code                        | cask + symlink + extensions | vscode/settings.json, vscode/extensions.txt         |
-| Claude Code                    | npm + VS Code ext           | scripts/setup-claude.sh                             |
-| Claude Desktop (Chat + Cowork) | Homebrew cask               | sign in manually on first launch                    |
+| Tool                           | Method                      | Config                                            |
+| ------------------------------ | --------------------------- | ------------------------------------------------- |
+| Homebrew + CLI tools           | Brewfile                    | node, python, git, gh, dotnet-sdk, starship       |
+| Hyper                          | cask + symlink              | hyper/.hyper.js — Tokyo Night theme, Fira Code    |
+| zsh                            | Oh My Zsh + plugins         | zsh/.zshrc — autosuggestions, syntax-highlighting |
+| Prompt                         | Starship                    | starship.toml — Tokyo Night colors                |
+| Node.js                        | nvm (official installer)    | installs latest LTS, set as default               |
+| VS Code                        | cask + symlink + extensions | vscode/settings.json, vscode/extensions.txt       |
+| Claude Code                    | npm + VS Code ext           | scripts/setup-claude.sh                           |
+| Claude Desktop (Chat + Cowork) | Homebrew cask               | sign in manually on first launch                  |
 
 ## Notes
 

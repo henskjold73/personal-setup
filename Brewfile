@@ -10,3 +10,4 @@ cask "dotnet-sdk"
 cask "hyper"
 cask "visual-studio-code"
 cask "claude"  # Claude desktop app — includes Chat, Cowork, and Claude Code integration
+cask "font-fira-code-nerd-font"

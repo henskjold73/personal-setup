@@ -1,0 +1,9 @@
+copilot
+codex
+corepack
+firebase-tools
+firevault
+gitversionjs
+npm
+nx
+vercel

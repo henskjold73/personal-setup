@@ -1,7 +1,7 @@
 module.exports = {
   config: {
     fontSize: 14,
-    fontFamily: '"JetBrainsMono Nerd Font", "JetBrains Mono", Menlo, monospace',
+    fontFamily: '"FiraCode Nerd Font", "Fira Code", Menlo, monospace',
     cursorShape: "BEAM",
     cursorBlink: true,
 

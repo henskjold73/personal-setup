@@ -49,8 +49,17 @@ ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 echo "==> Installing Starship prompt"
 curl -fsSL https://starship.rs/install.sh | sh -s -- -y
 
-echo "==> Installing JetBrains Mono Nerd Font"
-brew install --cask font-jetbrains-mono-nerd-font
+echo "==> Installing nvm"
+export NVM_DIR="$HOME/.nvm"
+if [ ! -d "$NVM_DIR" ]; then
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+else
+  echo "  nvm already installed, skipping"
+fi
+# Load nvm into this script's shell so we can install a default Node version now
+\. "$NVM_DIR/nvm.sh"
+nvm install --lts
+nvm alias default lts/*
 
 echo "==> Symlinking dotfiles"
 ln -sf "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"

@@ -1,10 +1,10 @@
 {
-  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'JetBrains Mono', Menlo, monospace",
+  "editor.fontFamily": "'FiraCode Nerd Font', 'Fira Code', Menlo, monospace",
   "editor.fontSize": 13,
   "editor.fontLigatures": true,
   "workbench.colorTheme": "Tokyo Night",
   "workbench.iconTheme": "material-icon-theme",
-  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font'",
+  "terminal.integrated.fontFamily": "'FiraCode Nerd Font'",
   "terminal.integrated.defaultProfile.osx": "zsh",
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
